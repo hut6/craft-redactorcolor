@@ -46,7 +46,24 @@ class Hut6RedactorColorPlugin extends BasePlugin
     public function init()
     {
         if (craft()->request->isCpRequest()) {
+
             craft()->templates->includeJsResource('hut6redactorcolor/fontcolor.js');
+
+            $css = "
+                .redactor-dropdown-box-backcolor,
+                .redactor-dropdown-box-fontcolor {
+                    min-width: 286px !important;
+                    padding: 2px 2px !important;
+                }
+                .redactor-dropdown-box-backcolor a:last-child,
+                .redactor-dropdown-box-fontcolor a:last-child {
+                    margin:0 !important;
+                }
+            ";
+
+            craft()->templates->includeCss($css);
         }
     }
 }
+
+
